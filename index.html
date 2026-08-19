@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>映画上映会 予約</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="page">
+  <section id="form-screen" class="panel">
+    <div class="event-header">
+      <h1 id="form-event-name">映画上映会</h1>
+      <p id="form-event-date">開催日を確認中...</p>
+    </div>
+    <form id="reservation-form">
+      <div class="form-group"><label for="name">氏名</label><input type="text" id="name" autocomplete="name" required></div>
+      <div class="form-group"><label for="address">住所</label><input type="text" id="address" autocomplete="street-address" required></div>
+      <div class="form-group"><label for="phone">電話番号</label><input type="tel" id="phone" autocomplete="tel" required></div>
+      <button type="submit" id="submit-button" disabled>予約する</button>
+    </form>
+    <p id="message" class="message"></p>
+  </section>
+
+  <section id="complete-screen" class="hidden">
+    <div id="ticket" class="ticket">
+      <div class="ticket-title">予約票</div>
+      <div class="ticket-item"><div class="ticket-label">イベント</div><div id="ticket-event-name" class="ticket-value"></div></div>
+      <div class="ticket-item"><div class="ticket-label">開催日</div><div id="ticket-event-date" class="ticket-value"></div></div>
+      <div class="ticket-item"><div class="ticket-label">お名前</div><div id="ticket-name" class="ticket-value"></div></div>
+      <div class="reservation-area"><div class="ticket-label">予約番号</div><div id="ticket-reservation-number" class="reservation-number"></div></div>
+      <div class="barcode-area"><svg id="barcode"></svg></div>
+      <div class="ticket-notice">当日はこの予約票を受付でご提示ください。</div>
+    </div>
+    <button type="button" id="pdf-button" class="pdf-button">予約票PDFを開く</button>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
