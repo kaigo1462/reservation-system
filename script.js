@@ -35,7 +35,7 @@ async function loadEvent() {
   }
 
   currentEvent = data;
-  document.getElementById("form-event-name").textContent = currentEvent.event_name;
+  document.getElementById("form-event-name").innerHTML = "大島町家族介護支援事業<br>映画上映会";
   document.getElementById("form-event-date").textContent = "開催日：" + formatDate(currentEvent.event_date);
 
   if (!currentEvent.reservation_open) {
