@@ -84,7 +84,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   currentReservationNumber = data[0].reservation_number;
-  document.getElementById("ticket-event-name").textContent = currentEvent.event_name;
+  document.getElementById("ticket-event-name").innerHTML = "大島町家族介護支援事業<br>映画上映会";
   document.getElementById("ticket-event-date").textContent = formatDate(currentEvent.event_date);
   document.getElementById("ticket-name").textContent = name;
   document.getElementById("ticket-reservation-number").textContent = currentReservationNumber;
