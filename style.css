@@ -4,10 +4,11 @@ body { margin: 0; padding: 20px; font-family: -apple-system, BlinkMacSystemFont,
 .panel { background: #fff; padding: 30px; border: 1px solid #ddd; border-radius: 8px; }
 .event-header { text-align: center; margin-bottom: 30px; }
 .event-header h1 { margin: 0 0 10px; font-size: 28px; }
-.event-header p { margin: 0; font-size: 17px; }
+.event-header p { margin: 0 0 8px; font-size: 17px; }
 .form-group { margin-bottom: 20px; }
 .form-group label { display: block; margin-bottom: 7px; font-size: 16px; font-weight: bold; }
-.form-group input { width: 100%; padding: 13px; border: 1px solid #aaa; border-radius: 4px; font-size: 16px; }
+.form-group input,
+.form-group select { width: 100%; padding: 13px; border: 1px solid #aaa; border-radius: 4px; background: #fff; font-size: 16px; }
 #submit-button, .pdf-button { width: 100%; padding: 14px; border: 0; border-radius: 5px; background: #222; color: #fff; font-size: 17px; font-weight: bold; cursor: pointer; }
 #submit-button:disabled, .pdf-button:disabled { opacity: .5; cursor: default; }
 .message { text-align: center; min-height: 25px; margin-top: 20px; }
@@ -17,10 +18,18 @@ body { margin: 0; padding: 20px; font-family: -apple-system, BlinkMacSystemFont,
 .ticket-item { margin-bottom: 22px; }
 .ticket-label { margin-bottom: 5px; font-size: 13px; color: #555; }
 .ticket-value { font-size: 20px; font-weight: bold; }
-.reservation-area { margin-top: 30px; padding: 20px 10px; border-top: 1px solid #aaa; }
+.reservation-area { margin-top: 30px; padding: 20px 10px 10px; border-top: 1px solid #aaa; }
 .reservation-number { margin-top: 8px; font-size: 30px; font-weight: bold; letter-spacing: 2px; }
-.barcode-area { width: 100%; margin: 10px auto 30px; overflow: hidden; }
-.barcode-area svg { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.reception-area { margin: 12px 0 30px; padding: 20px 10px 25px; border: 2px solid #222; border-radius: 8px; }
+.reception-label { font-size: 16px; font-weight: bold; }
+.reception-number { margin-top: 5px; font-size: 84px; line-height: 1.05; font-weight: 800; letter-spacing: 8px; font-variant-numeric: tabular-nums; }
 .ticket-notice { padding-top: 20px; border-top: 1px solid #aaa; font-size: 14px; }
 .pdf-button { margin-top: 20px; }
-@media (max-width: 600px) { body { padding: 12px; } .panel { padding: 22px 18px; } .ticket { padding: 28px 15px; } .event-header h1 { font-size: 24px; } .reservation-number { font-size: 24px; letter-spacing: 1px; } }
+@media (max-width: 600px) {
+  body { padding: 12px; }
+  .panel { padding: 22px 18px; }
+  .ticket { padding: 28px 15px; }
+  .event-header h1 { font-size: 24px; }
+  .reservation-number { font-size: 24px; letter-spacing: 1px; }
+  .reception-number { font-size: 72px; letter-spacing: 6px; }
+}
