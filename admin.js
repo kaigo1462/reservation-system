@@ -16,6 +16,12 @@ const logoutButton = document.getElementById("logout-button");
 
 let reservations = [];
 
+function getReceptionNumber(reservationNumber) {
+  const match = String(reservationNumber || "").match(/(\d{5})$/);
+  if (!match) return "";
+  return String(Number(match[1])).padStart(3, "0");
+}
+
 function formatDate(dateString) {
   if (!dateString) return "";
   return new Date(dateString).toLocaleDateString("ja-JP");
@@ -84,7 +90,6 @@ async function loadReservations() {
       name,
       address,
       phone,
-      checked_in,
       created_at,
       events (
         event_name,
@@ -110,6 +115,7 @@ function displayReservations() {
   reservations.forEach((reservation) => {
     const row = document.createElement("tr");
     row.innerHTML = `
+      <td>${escapeHtml(getReceptionNumber(reservation.reservation_number))}</td>
       <td>${escapeHtml(reservation.reservation_number)}</td>
       <td>${escapeHtml(reservation.name)}</td>
       <td>${escapeHtml(reservation.address)}</td>
@@ -117,12 +123,11 @@ function displayReservations() {
       <td>${escapeHtml(reservation.events?.event_name || "")}</td>
       <td>${escapeHtml(formatDate(reservation.events?.event_date))}</td>
       <td>${escapeHtml(formatDateTime(reservation.created_at))}</td>
-      <td>${reservation.checked_in ? "済" : "未"}</td>
     `;
     tableBody.appendChild(row);
   });
 
-  reservationCount.textContent = "予約件数：" + reservations.length + "件";
+  reservationCount.textContent = `予約件数：${reservations.length}件 / 定員150件`;
 }
 
 function escapeHtml(value) {
@@ -146,20 +151,20 @@ excelButton.addEventListener("click", () => {
   }
 
   const excelData = reservations.map((reservation) => ({
+    "受付番号": getReceptionNumber(reservation.reservation_number),
     "予約番号": reservation.reservation_number,
-    "氏名": reservation.name,
-    "住所": reservation.address,
+    "苗字": reservation.name,
+    "居住地区": reservation.address,
     "電話番号": reservation.phone,
     "イベント": reservation.events?.event_name || "",
     "開催日": formatDate(reservation.events?.event_date),
-    "予約日時": formatDateTime(reservation.created_at),
-    "チェックイン": reservation.checked_in ? "済" : "未"
+    "予約日時": formatDateTime(reservation.created_at)
   }));
 
   const worksheet = XLSX.utils.json_to_sheet(excelData);
   worksheet["!cols"] = [
-    { wch: 22 }, { wch: 18 }, { wch: 35 }, { wch: 18 },
-    { wch: 25 }, { wch: 15 }, { wch: 22 }, { wch: 14 }
+    { wch: 12 }, { wch: 22 }, { wch: 18 }, { wch: 14 },
+    { wch: 18 }, { wch: 28 }, { wch: 15 }, { wch: 22 }
   ];
 
   const workbook = XLSX.utils.book_new();
