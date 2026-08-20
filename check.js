@@ -62,7 +62,7 @@ form.addEventListener("submit", async (event) => {
 
   currentReservationNumber = data.reservation_number;
 
-  document.getElementById("ticket-event-name").textContent = data.event_name || "";
+  document.getElementById("ticket-event-name").innerHTML = "大島町家族介護支援事業<br>映画上映会";
   document.getElementById("ticket-event-date").textContent = formatDate(data.event_date);
   document.getElementById("ticket-name").textContent = data.name || "";
   document.getElementById("ticket-reservation-number").textContent = currentReservationNumber || "";
