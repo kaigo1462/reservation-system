@@ -23,19 +23,9 @@ const phoneInput = document.getElementById("phone");
 let currentEvent = null;
 let currentReservationNumber = null;
 
-nameInput.addEventListener("input", () => {
-  nameInput.value = nameInput.value
-    .replace(/[ぁ-ん一-龯々〆〤A-Za-z0-9０-９\s]/g, "")
-    .replace(/[^ァ-ヶー]/g, "");
-});
-
 phoneInput.addEventListener("input", () => {
   phoneInput.value = phoneInput.value.replace(/[^0-9]/g, "");
 });
-
-function isKatakanaSurname(value) {
-  return /^[ァ-ヶー]+$/.test(value);
-}
 
 function getReceptionNumber(reservationNumber) {
   const match = String(reservationNumber || "").match(/(\d{5})$/);
@@ -86,11 +76,6 @@ form.addEventListener("submit", async (event) => {
 
   if (!name || !area || !phone) {
     message.textContent = "すべての項目を入力してください。";
-    return;
-  }
-  if (!isKatakanaSurname(name)) {
-    message.textContent = "苗字はカタカナのみで入力してください。";
-    nameInput.focus();
     return;
   }
   if (!ALLOWED_AREAS.includes(area)) {
