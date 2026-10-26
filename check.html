@@ -3,53 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>予約確認</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <title>家族介護支援事業映画上映会｜ネット受付停止のお知らせ</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #f3f5f7; color: #202b36; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif; line-height: 1.9; }
+    main { max-width: 720px; margin: 64px auto; padding: 0 20px; }
+    article { background: #fff; border: 1px solid #dce2e8; border-top: 6px solid #284f68; border-radius: 8px; padding: 36px; }
+    h1 { margin: 0 0 28px; font-size: clamp(1.35rem, 4.8vw, 1.8rem); line-height: 1.6; overflow-wrap: anywhere; }
+    h2 { color: #8b302b; font-size: 1.15rem; margin: 0 0 14px; }
+    p { margin: 0 0 20px; }
+    .contact { margin-top: 28px; padding: 22px; background: #edf3f7; border-radius: 6px; }
+    .contact p { margin: 0; }
+    .phone { display: inline-block; padding: 8px 0; font-size: clamp(1.15rem, 5vw, 1.65rem); font-weight: 700; color: #184d72; text-underline-offset: 5px; }
+    a:focus-visible { outline: 3px solid #184d72; outline-offset: 4px; }
+    @media (max-width: 480px) { main { margin: 24px auto; padding: 0 14px; } article { padding: 24px 20px; } .contact { padding: 18px 14px; } }
+  </style>
 </head>
 <body>
-<main class="page">
-  <section id="check-screen" class="panel">
-    <div class="event-header">
-      <h1>大島町家族介護支援事業<br>映画上映会</h1>
-      <p>開催日：令和8年11月13日（金）</p>
-      <p>予約時に入力した苗字と携帯電話番号を入力してください。</p>
-    </div>
-
-    <form id="check-form">
-      <div class="form-group">
-        <label for="name">苗字</label>
-        <input type="text" id="name" autocomplete="family-name" maxlength="30" required>
+  <main>
+    <article aria-labelledby="event-title">
+      <h1 id="event-title">家族介護支援事業映画上映会</h1>
+      <h2>ネットでの受付停止のお知らせ</h2>
+      <p>PHP重大脆弱性対策のためネットでの受付は停止しました。</p>
+      <p>予約をご希望の方は大島町役場住民課まで直接お電話下さい。</p>
+      <div class="contact">
+        <p>電話番号</p>
+        <a class="phone" href="tel:0499221462" aria-label="電話番号 04992-2-1462">０４９９２－２－１４６２</a>
+        <p>大島町役場 住民課介護保険係</p>
       </div>
-
-      <div class="form-group">
-        <label for="phone">携帯電話番号 ※半角数字のみ</label>
-        <input type="tel" id="phone" autocomplete="tel" inputmode="numeric" pattern="[0-9]*" required>
-      </div>
-
-      <button type="submit" id="submit-button">予約を確認する</button>
-    </form>
-
-    <p id="message" class="message"></p>
-  </section>
-
-  <section id="complete-screen" class="hidden">
-    <div id="ticket" class="ticket">
-      <div class="ticket-title">予約票</div>
-      <div class="ticket-item"><div class="ticket-label">イベント</div><div id="ticket-event-name" class="ticket-value"></div></div>
-      <div class="ticket-item"><div class="ticket-label">開催日</div><div id="ticket-event-date" class="ticket-value"></div></div>
-      <div class="ticket-item"><div class="ticket-label">苗字</div><div id="ticket-name" class="ticket-value"></div></div>
-      <div class="reservation-area"><div class="ticket-label">予約番号</div><div id="ticket-reservation-number" class="reservation-number"></div></div>
-      <div class="reception-area"><div class="reception-label">受付番号</div><div id="ticket-reception-number" class="reception-number"></div></div>
-      <div class="ticket-notice">当日はこの予約票を受付でご提示ください。</div>
-    </div>
-
-    <button type="button" id="pdf-button" class="pdf-button">予約票PDFを開く</button>
-  </section>
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
-<script src="check.js?v=20260828-1"></script>
+    </article>
+  </main>
 </body>
 </html>
